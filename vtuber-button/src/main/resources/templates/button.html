@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>かぼくしゅかボタン</title>
+    <link rel="stylesheet" href="styles.css"> 
+
+</head>
+<body>
+
+<h1>かぼくしゅかボタン</h1>
+<p>ボタンを押しまくれ!</p>
+
+<!-- ボタンを含むコンテナーのdiv -->
+<div id="button-group-container">
+    <div id="buttons-container"></div> <!-- 元のディレクトリのボタンを表示するコンテナ -->
+</div>
+
+<audio id="audio" src=""></audio>
+
+<!-- フッター -->
+<footer>
+    <a href="link">切り抜き元一覧</a>
+    <a href="https://twitter.com/syukapen">かぼくしゅかTwitter</a>
+</footer>
+
+<!-- ボタン生成 -->
+<script th:inline="javascript">
+    /* ThymeleafからJavaScriptへの配列変換 */
+    var audioFileList = /*[[${audioFileList}]]*/ []; 
+
+    window.addEventListener('load', function() {
+        generateButtons(audioFileList, "buttons-container", "audio");
+    });
+    
+    // ボタンを動的に生成する関数
+	function generateButtons(audioList, containerId, directory) {
+    for (var i = 0; i < audioList.length; i++) {
+        var audioFileName = audioList[i];
+        var button = document.createElement("button");
+        button.className = "play-button";
+        button.textContent = audioFileName;
+        button.setAttribute("onclick", "playSound('/" + directory + "/" + audioFileName + ".mp3')"); // ディレクトリに応じてパスを設定
+        button.setAttribute("data-file-name", audioFileName);
+        document.getElementById(containerId).appendChild(button);
+    }
+}
+
+	function playSound(src) {
+    var audio = document.getElementById("audio");
+    audio.src = src;
+    audio.play();
+}
+</script>
+
+</body>
+</html>

@@ -1,0 +1,38 @@
+/* styles.css */
+
+/* ボタンのスタイル */
+.play-button {
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: #bf8dff; /* 薄紫に変更 */
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin: 5px 5px 5px 5px; /* 上右下左の余白を1cmに設定 */
+}
+
+/* ボタンのホバー時のスタイル */
+.play-button:hover {
+  background-color: #a17acc; /* ホバー時の色も微調整 */
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    /*height: 100vh; /* 画面全体の高さを指定 */
+    margin: 0;
+}
+
+
+h1,p {
+    text-align: center;
+    margin-top: 20px; /* 例として上部に20pxのマージンを追加 */
+}
+
+h2 {
+  text-align: center;
+}
